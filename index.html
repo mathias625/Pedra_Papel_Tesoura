@@ -9,7 +9,56 @@
 </head>
 
 <body>
-   
+   <header class="introducao">
+    <img src="./images/logogame.png" alt="logo">
+    <div class="placar">
+        <h2 class="score">Pontos</h2>
+        <p class="pontuacao">0</p>
+    </div>
+   </header>
+   <main class="jogo">
+    <img class ="hexagono" src="images/hexagono.png" alt="">
+<!--papel-->
+<div class="conteiner conteiner-papel" onclick="jogar(papel)">
+    <button value="papel" class="papel opcao"><img src="images/icon-paper.svg" alt="" ></button>
+</div>
+<!--tesoura-->
+<div class="conteiner conteiner-tesoura" onclick="jogar(tesoura)">
+    <button value="tesoura" class="tesoura opcao"><img src="images/icon-scissors.svg" alt=""></button>
+    </div>
+    <!--pedra-->
+<div class="conteiner conteiner-pedra" onclick="jogar(pedra)">
+    <button value="pedra" class="pedra opcao"><img src="images/icon-rock.svg" alt=""></button>
+</div>
+ 
+</div>  
+   </main>
+   <!--regras-->
+   <div id="regra" class="regra" class="regras">
+    <div class="regras-titulo">
+        <h1>Regras</h1>
+        <button  onclick="fecharregras()">
+            <img src="images/icon-close.svg" alt=""></button>
+    </div>
+    <img src="images/regras.jpg" alt="">
+   </div>
+   <!--gameplay-->
+   <div class="gameplay">
+    <div player display>
+        <h2 class="persona">Você Escolheu</h2>
+        <p class="test"></p>
+    </div>
+    <div class="fim">
+        <p class="result">
+            <button class="playAgain" onclick="reset()">Jogar Novamente</button>
+        </p>
+    </div>
+    <div class="houese display">
+        <h2 class="persona">O computador Escolheu</h2>
+        <p class="test1"></p>
+    </div>
+   </div>
+   <button class="regras-button" onclick="mostrarregras()">Regras</button>
     <script src="script.js"></script>
 </body>
 

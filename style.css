@@ -4,3 +4,140 @@
     box-sizing: border-box;
     font-family: 'Courier New', Courier, monospace;
 }
+
+body{
+    background: #630028;
+}
+.introducao{
+    margin-top: 40px;
+    border-radius: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    border: solid 2px white;
+    height: 200px
+}
+.introducao img {
+    padding: 20px;
+    width: 30%;
+    min-width: 150px;
+    border-radius: 10px;
+}
+.placar{
+    background-color: white;
+    font-family: sans-serif;
+    width: 200px;
+    height: 150px;
+    margin-right: 20px;
+    border-radius: 10px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.score{
+    color: blue;
+    font-size: 15px;
+    margin-top: 5px;
+}
+.pontuacao{
+    font-size: 50px;
+    font-weight: bold;
+    color: #534f65;
+}
+/*main*/
+.jogo{
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    justify-content: center;
+    display: flex;
+    margin-top: 150px;
+    width: 100%;
+    max-width: 600px;
+    height: 30%;
+}
+.hexagono{
+    width: 70%;
+    opacity: 2.5;
+}
+.opcao{
+    padding: 20px;
+    background-color: white;
+    border-radius: 50%;
+    border: 35px solid;
+    width: 250px;
+    height: 250px;
+    animation: opacidade 2s linear;
+    animation: rotatez 1s linear;
+}
+.opcao :hover{
+    animation: LuzDeFundo 2s ease infinite;
+    cursor: pointer;
+
+}
+.test
+.test1{
+    border-radius: 50%;
+}
+.conteiner-papel{
+    position: absolute;
+    top: -130px;
+    left: -60px;
+}
+.conteiner-tesoura{
+    position: absolute;
+    top: -130px;
+    right: -60px;
+}
+.conteiner-pedra{
+    position:absolute;
+    bottom: -70px;
+}
+.opcao img{
+    width: 100%;
+    transition: 0.5s;
+}
+.opcao :hover{
+    transform: rotateY(360deg);
+}
+.papel{
+    border-color: #dd04ae;
+    box-shadow: 0px 7px 0px #eb31c3, inset 0px 7px #d6d6d6;
+}
+.tesoura{
+    border-color: #07d99d;
+    box-shadow: 0px 7px 0px #71e89a, inset 0px 7px #d6d6d6;
+}
+.pedra{
+    border-color: #f7f316;
+    box-shadow: 0px 7px 0px #e5f369, inset 0px 7px #d6d6d6;
+}
+.regras{
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    left: calc(50% - 235px);
+    top: 200px;
+    border-radius: 10px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 30px;
+    box-shadow: 0 0 0 3000px, rgba(0, 0, 0, 0.6);
+    z-index: 2;
+}
+.regras-titulo{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-bottom: 40px;
+    
+}
