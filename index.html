@@ -17,22 +17,38 @@
     </div>
    </header>
    <main class="jogo">
-    <img class ="hexagono" src="images/hexagono.png" alt="">
-<!--papel-->
-<div class="conteiner conteiner-papel" onclick="jogar(papel)">
-    <button value="papel" class="papel opcao"><img src="images/icon-paper.svg" alt="" ></button>
+
+<div class="conteiner conteiner-pedra">
+    <button value="pedra" class="pedra opcao" onclick="jogar('pedra')">
+        <img src="images/icon-rock.svg" alt="">
+    </button>
 </div>
-<!--tesoura-->
-<div class="conteiner conteiner-tesoura" onclick="jogar(tesoura)">
-    <button value="tesoura" class="tesoura opcao"><img src="images/icon-scissors.svg" alt=""></button>
-    </div>
-    <!--pedra-->
-<div class="conteiner conteiner-pedra" onclick="jogar(pedra)">
-    <button value="pedra" class="pedra opcao"><img src="images/icon-rock.svg" alt=""></button>
+
+<div class="conteiner conteiner-papel">
+    <button value="papel" class="papel opcao" onclick="jogar('papel')">
+        <img src="images/icon-paper.svg" alt="">
+    </button>
 </div>
- 
-</div>  
-   </main>
+
+<div class="conteiner conteiner-tesoura">
+    <button value="tesoura" class="tesoura opcao" onclick="jogar('tesoura')">
+        <img src="images/icon-scissors.svg" alt="">
+    </button>
+</div>
+
+<div class="conteiner conteiner-lagarto">
+    <button value="lagarto" class="lagarto opcao" onclick="jogar('lagarto')">
+        <img src="images/lagarto.png" alt="">
+    </button>
+</div>
+
+<div class="conteiner conteiner-spock">
+    <button value="spock" class="spock opcao" onclick="jogar('spock')">
+        <img src="images/spokhand.webp" alt="">
+    </button>
+</div>
+
+</main>
    <!--regras-->
    <div id="regra" class="regras">
     <div class="regras-titulo">

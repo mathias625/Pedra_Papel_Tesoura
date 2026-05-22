@@ -1,88 +1,110 @@
-
 var regras = document.getElementsByClassName("regras")[0];
+
 function mostrarregras() {
-    regras.style.display = "flex"
+    regras.style.display = "flex";
 }
+
 function fecharregras() {
-    regras.style.display = "none"
+    regras.style.display = "none";
 }
+
 var jogo = document.getElementsByClassName("jogo")[0];
 var selecao = document.getElementsByClassName("gameplay")[0];
 var test = document.getElementsByClassName("test")[0];
-var opcao = document.getElementsByClassName("opcao")[0];
-var pedra = document.getElementsByClassName("pedra")[0];
-var papel = document.getElementsByClassName("papel")[0];
-var tesoura = document.getElementsByClassName("tesoura")[0];
 var test1 = document.getElementsByClassName("test1")[0];
 var resultado = document.getElementsByClassName("result")[0];
-var refs = [pedra, papel, tesoura];
 var pontuacao = document.getElementsByClassName("pontuacao")[0];
 var playAgain = document.getElementsByClassName("fim")[0];
-var score = 0;
 var buttonRegras = document.getElementsByClassName("regras-button")[0];
 
-function jogar(num) {
-    jogo.style.csstext = "animation: opacidade 0.5s linear;"
-    "animation-direction:reverse;"
-    setTimeout(() => {
-        jogo.style.display = "none";
-    }, 500);
+var score = 0;
 
-    setTimeout(() => {
-        selecao.style.display = "flex";
-    }, 500);
-    selecao.style.cssText = "animation: opacidade 1.5s linear;"
-    buttonRegras.style.display = "none";
-    switch (num) {
-        case pedra:
-            test.innerHTML = pedra.outerHTML
-            test.value = pedra.value
-            break;
-        case papel:
-            test.innerHTML = papel.outerHTML
-            test.value = papel.value
-            break;
-        case tesoura:
-            test.innerHTML = tesoura.outerHTML
-            test.value = tesoura.value
-            break;
+var escolhas = {
+    pedra: {
+        classe: "pedra",
+        imagem: "images/icon-rock.svg",
+        vence: ["tesoura", "lagarto"]
+    },
+
+    papel: {
+        classe: "papel",
+        imagem: "images/icon-paper.svg",
+        vence: ["pedra", "spock"]
+    },
+
+    tesoura: {
+        classe: "tesoura",
+        imagem: "images/icon-scissors.svg",
+        vence: ["papel", "lagarto"]
+    },
+
+    lagarto: {
+        classe: "lagarto",
+        imagem: "images/lagarto.png",
+        vence: ["papel", "spock"]
+    },
+
+    spock: {
+        classe: "spock",
+        imagem: "images/spokhand.webp",
+        vence: ["pedra", "tesoura"]
     }
+};
 
-    var random = Math.floor(Math.random() * 3);
-    var house = refs[random];
-    test1.innerHTML = house.outerHTML;
-    test1.value = house.value
-
-    setTimeout(() => {
-        Resolucao()
-    }, 500)
+function criarBotao(nome){
+    return `
+        <button class="${escolhas[nome].classe} opcao">
+            <img src="${escolhas[nome].imagem}">
+        </button>
+    `;
 }
-function Resolucao() {
-    if (test.value == "pedra" && test1.value == "tesoura" ||
-        test.value == "tesoura" && test1.value == "papel" ||
-        test.value == "papel" && test1.value == "pedra") {
-      resultado.innerHTML = "Você Ganhou";
-      score +=1;
-      pontuacao.innerHTML = score;
-        test.style.cssText = "animation: LuzDeFundo 1.5s ease infinite;";
-    } else if (test.value == "tesoura" && test1.value == "pedra" ||
-        test.value == "papel" && test1.value == "tesoura" ||
-        test.value == "pedra" && test1.value == "papel") {
-        resultado.innerHTML = "Você perdeu ):";
-        test1.style.cssText = "animation: luzDeFundo 1.5s ease infinite"
-    } else {
-        resultado.innerHTML = "empate";
-        test.style.cssText = "animation> LuzDeFundo 1.5s ease infinite";
+
+function jogar(jogadaPlayer) {
+
+    jogo.style.display = "none";
+    selecao.style.display = "flex";
+    buttonRegras.style.display = "none";
+
+    test.innerHTML = criarBotao(jogadaPlayer);
+
+    var opcoes = Object.keys(escolhas);
+    var random = Math.floor(Math.random() * opcoes.length);
+    var jogadaCasa = opcoes[random];
+
+    test1.innerHTML = criarBotao(jogadaCasa);
+
+    setTimeout(() => {
+        resolver(jogadaPlayer, jogadaCasa);
+    }, 500);
+}
+
+function resolver(player, casa){
+
+    if(player === casa){
+        resultado.innerHTML = "Empate";
     }
+
+    else if(escolhas[player].vence.includes(casa)){
+        resultado.innerHTML = "Você Ganhou";
+        score++;
+        pontuacao.innerHTML = score;
+        test.style.cssText = "animation: LuzDeFundo 1.5s ease infinite;";
+    }
+
+    else{
+        resultado.innerHTML = "Você Perdeu";
+        test1.style.cssText = "animation: LuzDeFundo 1.5s ease infinite;";
+    }
+
     playAgain.style.display = "flex";
 }
+
 function reset() {
-    jogo.style.display = "flex";
+    jogo.style.display = "grid";
     selecao.style.display = "none";
     resultado.innerHTML = "";
     playAgain.style.display = "none";
-    test.style.cssText = "animation:''"
-    test1.style.cssText = "animation:''"
-    jogo.style.cssText="''";
-    buttonRegras.style.display="block"
+    test.style.cssText = "";
+    test1.style.cssText = "";
+    buttonRegras.style.display = "block";
 }
